@@ -12,19 +12,19 @@ function solution(info, query) {
         infoMap[key].sort((a, b) => a - b); 
     }
     
-    query = query.map((q) => {
-        return q.split(/ and | |-/i).filter(v => v)
-    })
+    // query = query.map((q) => {
+    //     return q.split(/ and | |-/i).filter(v => v)
+    // })
     // console.log(query)
     
-    query.forEach((newQ, idx) => {
+    query.forEach((q, idx) => {
         let cnt = 0
-        // let newQ = q.split(" and ")
-        // let [temp, score] = newQ.pop().split(" ")
-        // newQ.push(temp)
-        // newQ = newQ.filter((v) => v !== "-")
+        let newQ = q.split(" and ")
+        let [temp, score] = newQ.pop().split(" ")
+        newQ.push(temp)
+        newQ = newQ.filter((v) => v !== "-")
         // score = Number(score)
-        let score = newQ.pop()
+        // let score = newQ.pop()
         let key = Object.keys(infoMap)
         
         key = key.filter((k) => newQ.every((v) => k.includes(v)))
